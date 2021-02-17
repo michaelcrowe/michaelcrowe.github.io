@@ -28,20 +28,18 @@
   var slots = {};
 
   //Set variables for ad unit code and sizes.
-  var adUnitCodes = '/21841059662/THE_TEST';
+  var adUnitCodes = '21841059662/THE_TEST';
   var sizes = [[300, 250],[320, 150],[300, 300], [728,90]];
 
   // <div id='div-3' class="js-dfp"></div>
 
   window.onload = function () {
-    console.log('fired d3');
     $('.js-dfp').each(function() {
       var $div = $(this);
-      console.log($div);
       var id = $div.attr('id');
-      // var key = adUnitCodes + "/" + id;
+      var key = adUnitCodes + "/" + id;
       googletag.cmd.push(function() {
-          slots = googletag.defineSlot(adUnitCodes, sizes, id).setTargeting('test', 'infinitescroll').addService(googletag.pubads());
+          slots[key] = googletag.defineSlot(adUnitCodes, sizes, id).addService(googletag.pubads());
           googletag.display(id);
       });
     });
